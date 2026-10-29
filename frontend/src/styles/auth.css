@@ -1,0 +1,195 @@
+/* ============================================================
+   Auth Pages — Cross-browser & Cross-device
+   ============================================================ */
+
+.auth-page {
+  display: -webkit-flex;
+  display: flex;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  min-height: 100vh;
+  min-height: 100dvh;
+  padding: var(--space-lg);
+  /* Safe area for notched devices */
+  padding-top: calc(var(--space-lg) + var(--safe-top));
+  padding-bottom: calc(var(--space-lg) + var(--safe-bottom));
+  padding-left: calc(var(--space-lg) + var(--safe-left));
+  padding-right: calc(var(--space-lg) + var(--safe-right));
+  position: relative;
+  background: var(--bg-primary);
+}
+
+.auth-container {
+  width: 100%;
+  max-width: 440px;
+  -webkit-animation: fadeInUp 0.6s ease;
+  animation: fadeInUp 0.6s ease;
+}
+
+.auth-card {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-xl);
+  padding: var(--space-2xl);
+  box-shadow: var(--shadow-lg);
+}
+
+.auth-header {
+  text-align: center;
+  margin-bottom: var(--space-xl);
+}
+
+.auth-logo {
+  font-size: var(--font-2xl);
+  font-weight: 800;
+  color: var(--text-primary);
+  margin-bottom: var(--space-sm);
+  letter-spacing: -0.5px;
+}
+
+.auth-subtitle {
+  color: var(--text-secondary);
+  font-size: var(--font-sm);
+}
+
+.auth-form {
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: column;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.auth-field {
+  position: relative;
+}
+
+.auth-field .form-input {
+  padding-left: 44px;
+  /* Ensure 16px font-size to prevent iOS zoom */
+  font-size: var(--font-base);
+  /* Restore border-radius for auth inputs */
+  border-radius: var(--radius-md);
+}
+
+.auth-field-icon {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  color: var(--text-muted);
+  font-size: var(--font-lg);
+  pointer-events: none;
+  -webkit-transition: color var(--transition-fast);
+  transition: color var(--transition-fast);
+}
+
+.auth-field:focus-within .auth-field-icon {
+  color: var(--accent-primary);
+}
+
+.auth-submit {
+  width: 100%;
+  padding: 14px;
+  font-size: var(--font-base);
+  font-weight: 700;
+  margin-top: var(--space-sm);
+  position: relative;
+  overflow: hidden;
+  /* Touch-friendly */
+  min-height: 48px;
+  touch-action: manipulation;
+}
+
+.auth-submit:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  -webkit-transform: none !important;
+  transform: none !important;
+}
+
+.auth-footer {
+  text-align: center;
+  margin-top: var(--space-lg);
+  font-size: var(--font-sm);
+  color: var(--text-secondary);
+}
+
+.auth-footer a {
+  font-weight: 600;
+  color: var(--accent-primary);
+  /* Enlarged touch target for links */
+  display: inline-block;
+  padding: 4px 0;
+}
+.auth-footer a:hover {
+  text-decoration: underline;
+}
+
+.auth-error {
+  background: rgba(239, 68, 68, 0.06);
+  border: 1px solid rgba(239, 68, 68, 0.15);
+  border-radius: var(--radius-md);
+  padding: var(--space-sm) var(--space-md);
+  color: #ef4444;
+  font-size: var(--font-sm);
+  -webkit-animation: fadeInDown 0.3s ease;
+  animation: fadeInDown 0.3s ease;
+}
+
+/* ========================================================
+   Responsive Breakpoints
+   ======================================================== */
+
+@media (max-width: 480px) {
+  .auth-page {
+    padding: var(--space-md);
+    padding-top: calc(var(--space-md) + var(--safe-top));
+    padding-bottom: calc(var(--space-md) + var(--safe-bottom));
+    /* Align card to top on small screens for keyboard room */
+    -webkit-align-items: flex-start;
+    align-items: flex-start;
+    padding-top: calc(var(--space-2xl) + var(--safe-top));
+  }
+
+  .auth-card {
+    padding: var(--space-xl) var(--space-lg);
+    border-radius: var(--radius-lg);
+  }
+
+  .auth-logo {
+    font-size: 1.75rem;
+  }
+}
+
+/* Landscape phone — reduce padding to give keyboard room */
+@media (max-height: 500px) and (orientation: landscape) {
+  .auth-page {
+    -webkit-align-items: flex-start;
+    align-items: flex-start;
+    padding-top: calc(var(--space-md) + var(--safe-top));
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .auth-card {
+    padding: var(--space-lg);
+  }
+
+  .auth-header {
+    margin-bottom: var(--space-md);
+  }
+}
+
+/* Reduce motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .auth-container,
+  .auth-error {
+    -webkit-animation: none !important;
+    animation: none !important;
+  }
+}
